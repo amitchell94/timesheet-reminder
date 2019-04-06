@@ -85,5 +85,18 @@ namespace ReminderApp
             reminderTimes.Add(messageTime, DateTime.MinValue);
             timesListBox.Items.Add(messageTime);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = true;
+            this.Hide();
+            notifyIcon1.ShowBalloonTip(3000);
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            notifyIcon1.Visible = false;
+        }
     }
 }
