@@ -27,13 +27,6 @@ namespace ReminderApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            timer2.Start();
-            button1.Enabled = false;
-            button2.Enabled = true;
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         { 
 
@@ -71,19 +64,18 @@ namespace ReminderApp
             }
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            timer2.Stop();
-            button1.Enabled = true;
-            button2.Enabled = false;
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             messageTime = maskedTextBox1.Text + " " + comboBox1.Text;
-            reminderTimes.Add(messageTime, DateTime.MinValue);
-            timesListBox.Items.Add(messageTime);
+            if (!reminderTimes.ContainsKey(messageTime))
+            {
+                reminderTimes.Add(messageTime, DateTime.MinValue);
+                timesListBox.Items.Add(messageTime);
+                errorText.Text = "";
+            } else
+            {
+                errorText.Text = "Time already added";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -97,6 +89,17 @@ namespace ReminderApp
         {
             this.Show();
             notifyIcon1.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        { 
+            if (timesListBox.SelectedIndex != -1)
+            {
+                reminderTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
+                timesListBox.Items.Remove(timesListBox.Items[timesListBox.SelectedIndex]);
+            }
+            else
+                MessageBox.Show("Debe seleccionar un email");
         }
     }
 }

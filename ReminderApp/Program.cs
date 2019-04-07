@@ -20,8 +20,8 @@ namespace ReminderApp
         }
 
         //TODO:
-        //1) Need to add ability to remove added times
-        //2) Clean up form layout
+        //1) Need to add ability to remove added times - DONE
+        //2) Clean up form layout - MORE OR LESS DONE
         //3) Have application start minimised to tray
         //4) Store times on next start of application
         //5) Ask if user is still doing a certain task intead of typing in everytime
