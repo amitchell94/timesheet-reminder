@@ -34,14 +34,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.button4 = new System.Windows.Forms.Button();
             this.timesListBox = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.errorText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +56,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 285);
+            this.label2.Location = new System.Drawing.Point(7, 295);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 25);
             this.label2.TabIndex = 1;
@@ -63,48 +64,30 @@
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(22, 323);
+            this.maskedTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox1.Location = new System.Drawing.Point(12, 323);
             this.maskedTextBox1.Mask = "00:00:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(177, 62);
+            this.maskedTextBox1.Size = new System.Drawing.Size(158, 40);
             this.maskedTextBox1.TabIndex = 2;
             // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.comboBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.comboBox1.Location = new System.Drawing.Point(205, 321);
+            this.comboBox1.Location = new System.Drawing.Point(176, 321);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(65, 63);
+            this.comboBox1.Size = new System.Drawing.Size(85, 42);
             this.comboBox1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(22, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(248, 46);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(22, 457);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(248, 46);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.comboBox1.Text = "AM";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(484, 571);
+            this.button3.Location = new System.Drawing.Point(484, 415);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(44, 35);
             this.button3.TabIndex = 8;
@@ -128,9 +111,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(296, 321);
+            this.button4.Location = new System.Drawing.Point(267, 321);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(163, 64);
+            this.button4.Size = new System.Drawing.Size(163, 42);
             this.button4.TabIndex = 10;
             this.button4.Text = "Add Time";
             this.button4.UseVisualStyleBackColor = true;
@@ -140,21 +123,50 @@
             // 
             this.timesListBox.FormattingEnabled = true;
             this.timesListBox.ItemHeight = 25;
-            this.timesListBox.Location = new System.Drawing.Point(22, 88);
+            this.timesListBox.Location = new System.Drawing.Point(12, 64);
             this.timesListBox.Name = "timesListBox";
-            this.timesListBox.Size = new System.Drawing.Size(278, 154);
+            this.timesListBox.Size = new System.Drawing.Size(387, 204);
             this.timesListBox.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 25);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Reminder times";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(405, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 48);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // errorText
+            // 
+            this.errorText.AutoSize = true;
+            this.errorText.ForeColor = System.Drawing.Color.Red;
+            this.errorText.Location = new System.Drawing.Point(12, 376);
+            this.errorText.Name = "errorText";
+            this.errorText.Size = new System.Drawing.Size(0, 25);
+            this.errorText.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 618);
+            this.ClientSize = new System.Drawing.Size(540, 462);
+            this.Controls.Add(this.errorText);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.timesListBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label2);
@@ -175,14 +187,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox timesListBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label errorText;
     }
 }
 
