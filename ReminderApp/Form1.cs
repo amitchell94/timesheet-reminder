@@ -27,8 +27,7 @@ namespace ReminderApp
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        { 
-
+        {
             currentTime = DateTime.Now.ToString("hh:mm:ss tt");
             label1.Text = currentTime;
             TimeSpan fiveMinutes = new TimeSpan(0, 5 ,0);
@@ -61,6 +60,9 @@ namespace ReminderApp
             {
                 reminderTimes.Add(messageTime, DateTime.MinValue);
                 timesListBox.Items.Add(messageTime);
+                Properties.Settings.Default.selectedTimes.Add(messageTime);
+                Properties.Settings.Default.Save();
+
                 errorText.Text = "";
             } else
             {
@@ -86,7 +88,10 @@ namespace ReminderApp
             if (timesListBox.SelectedIndex != -1)
             {
                 reminderTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
+                Properties.Settings.Default.selectedTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
                 timesListBox.Items.Remove(timesListBox.Items[timesListBox.SelectedIndex]);
+
+                Properties.Settings.Default.Save();
                 errorText.Text = "";
             }
             else
@@ -101,6 +106,31 @@ namespace ReminderApp
             {
                 selectedFilePath = folderBrowserDialog.SelectedPath;
                 filePath.Text = selectedFilePath;
+                Properties.Settings.Default.filePath = selectedFilePath;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.filePath)) { 
+                filePath.Text = Properties.Settings.Default.filePath;
+                selectedFilePath = Properties.Settings.Default.filePath;
+                if (Properties.Settings.Default.selectedTimes != null)
+                {
+                    foreach (var item in Properties.Settings.Default.selectedTimes)
+                    {
+                        timesListBox.Items.Add(item);
+                    }
+                    //timesListBox.Items.Add(Properties.Settings.Default.selectedTimes);
+                    foreach (var item in timesListBox.Items)
+                    {
+                        reminderTimes.Add(item.ToString(), DateTime.MinValue);
+                    }
+                } else
+                {
+                    Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
+                }
             }
         }
     }

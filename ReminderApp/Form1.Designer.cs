@@ -67,7 +67,7 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(12, 401);
+            this.maskedTextBox1.Location = new System.Drawing.Point(12, 399);
             this.maskedTextBox1.Mask = "00:00:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(158, 40);
@@ -160,7 +160,7 @@
             // 
             // filePath
             // 
-            this.filePath.Location = new System.Drawing.Point(12, 56);
+            this.filePath.Location = new System.Drawing.Point(12, 62);
             this.filePath.Name = "filePath";
             this.filePath.Size = new System.Drawing.Size(387, 31);
             this.filePath.TabIndex = 15;
@@ -169,7 +169,7 @@
             // 
             this.browseButton.Location = new System.Drawing.Point(405, 56);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(115, 31);
+            this.browseButton.Size = new System.Drawing.Size(115, 43);
             this.browseButton.TabIndex = 16;
             this.browseButton.Text = "Browse..";
             this.browseButton.UseVisualStyleBackColor = true;
@@ -197,6 +197,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Time Sheet Reminder";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
