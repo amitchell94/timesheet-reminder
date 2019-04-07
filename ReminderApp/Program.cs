@@ -26,6 +26,7 @@ namespace ReminderApp
         //4) Store times on next start of application
         //5) Ask if user is still doing a certain task intead of typing in everytime
         //6) Perhaps try to use toast notifications instead of inputBoxes
+        //7) Allow user to specify path. - DONE
 
 
     }

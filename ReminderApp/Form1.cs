@@ -18,9 +18,8 @@ namespace ReminderApp
     {
         string currentTime;
         string messageTime;
-        //List<ReminderTime> reminderTimes = new List<ReminderTime>();
+        string selectedFilePath;
         private Dictionary<string, DateTime> reminderTimes = new Dictionary<string, DateTime>();
-        bool complete = false;
 
         public Form1()
         {
@@ -35,6 +34,7 @@ namespace ReminderApp
             TimeSpan fiveMinutes = new TimeSpan(0, 5 ,0);
             DateTime fiveMinutesAgo = DateTime.Now.Subtract(fiveMinutes);
 
+            //Check whether the current time is in the list, if so then check that last time it was checked was longer than 5 minutes ago.
             if (reminderTimes.ContainsKey(currentTime) && ((DateTime.Compare(reminderTimes[currentTime], fiveMinutesAgo)) < 0))
             {
                 reminderTimes[currentTime] = DateTime.Now;
@@ -42,17 +42,7 @@ namespace ReminderApp
 
                 try
                 {
-
-                    if (!complete)
-                    {
-                        StreamWriter sw = new StreamWriter("C:\\Users\\andym\\Documents\\Sample.txt");
-
-                        sw.WriteLine("Timesheet entries");
-                        sw.Close();
-                        complete = true;
-                    }
-
-                    File.AppendAllText(@"C:\\Users\\andym\\Documents\\Sample.txt",
+                    File.AppendAllText(selectedFilePath + "\\Sample.txt",
                         DateTime.Now.DayOfWeek.ToString() + "\t" +
                         DateTime.Now.ToString() + "\t" + res + Environment.NewLine);
 
@@ -92,14 +82,26 @@ namespace ReminderApp
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
+        {
             if (timesListBox.SelectedIndex != -1)
             {
                 reminderTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
                 timesListBox.Items.Remove(timesListBox.Items[timesListBox.SelectedIndex]);
+                errorText.Text = "";
             }
             else
-                MessageBox.Show("Debe seleccionar un email");
+                errorText.Text = "No time to remove.";
+        }
+
+        private void browseButton_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                selectedFilePath = folderBrowserDialog.SelectedPath;
+                filePath.Text = selectedFilePath;
+            }
         }
     }
 }
