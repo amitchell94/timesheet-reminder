@@ -43,12 +43,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.errorText = new System.Windows.Forms.Label();
+            this.filePath = new System.Windows.Forms.TextBox();
+            this.browseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 0;
@@ -56,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 295);
+            this.label2.Location = new System.Drawing.Point(7, 373);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 25);
             this.label2.TabIndex = 1;
@@ -65,7 +67,7 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(12, 323);
+            this.maskedTextBox1.Location = new System.Drawing.Point(12, 401);
             this.maskedTextBox1.Mask = "00:00:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(158, 40);
@@ -79,7 +81,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "AM",
             "PM"});
-            this.comboBox1.Location = new System.Drawing.Point(176, 321);
+            this.comboBox1.Location = new System.Drawing.Point(176, 399);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(85, 42);
             this.comboBox1.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(484, 415);
+            this.button3.Location = new System.Drawing.Point(484, 493);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(44, 35);
             this.button3.TabIndex = 8;
@@ -111,7 +113,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(267, 321);
+            this.button4.Location = new System.Drawing.Point(267, 399);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(163, 42);
             this.button4.TabIndex = 10;
@@ -123,7 +125,7 @@
             // 
             this.timesListBox.FormattingEnabled = true;
             this.timesListBox.ItemHeight = 25;
-            this.timesListBox.Location = new System.Drawing.Point(12, 64);
+            this.timesListBox.Location = new System.Drawing.Point(12, 142);
             this.timesListBox.Name = "timesListBox";
             this.timesListBox.Size = new System.Drawing.Size(387, 204);
             this.timesListBox.TabIndex = 11;
@@ -131,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 34);
+            this.label3.Location = new System.Drawing.Point(7, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(161, 25);
             this.label3.TabIndex = 12;
@@ -139,7 +141,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(405, 64);
+            this.button1.Location = new System.Drawing.Point(405, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 48);
             this.button1.TabIndex = 13;
@@ -151,16 +153,35 @@
             // 
             this.errorText.AutoSize = true;
             this.errorText.ForeColor = System.Drawing.Color.Red;
-            this.errorText.Location = new System.Drawing.Point(12, 376);
+            this.errorText.Location = new System.Drawing.Point(12, 454);
             this.errorText.Name = "errorText";
             this.errorText.Size = new System.Drawing.Size(0, 25);
             this.errorText.TabIndex = 14;
+            // 
+            // filePath
+            // 
+            this.filePath.Location = new System.Drawing.Point(12, 56);
+            this.filePath.Name = "filePath";
+            this.filePath.Size = new System.Drawing.Size(387, 31);
+            this.filePath.TabIndex = 15;
+            // 
+            // browseButton
+            // 
+            this.browseButton.Location = new System.Drawing.Point(405, 56);
+            this.browseButton.Name = "browseButton";
+            this.browseButton.Size = new System.Drawing.Size(115, 31);
+            this.browseButton.TabIndex = 16;
+            this.browseButton.Text = "Browse..";
+            this.browseButton.UseVisualStyleBackColor = true;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 462);
+            this.ClientSize = new System.Drawing.Size(540, 536);
+            this.Controls.Add(this.browseButton);
+            this.Controls.Add(this.filePath);
             this.Controls.Add(this.errorText);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -196,6 +217,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label errorText;
+        private System.Windows.Forms.TextBox filePath;
+        private System.Windows.Forms.Button browseButton;
     }
 }
 
