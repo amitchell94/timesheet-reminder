@@ -28,7 +28,7 @@ namespace ReminderApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            currentTime = DateTime.Now.ToString("hh:mm:ss tt");
+            currentTime = DateTime.Now.ToString("hh:mm:ss");
             label1.Text = currentTime;
             TimeSpan fiveMinutes = new TimeSpan(0, 5 ,0);
             DateTime fiveMinutesAgo = DateTime.Now.Subtract(fiveMinutes);
@@ -37,29 +37,21 @@ namespace ReminderApp
             if (reminderTimes.ContainsKey(currentTime) && ((DateTime.Compare(reminderTimes[currentTime], fiveMinutesAgo)) < 0))
             {
                 reminderTimes[currentTime] = DateTime.Now;
-                string res = Interaction.InputBox("What are you doing right now?");
 
-                try
-                {
-                    File.AppendAllText(selectedFilePath + "\\Sample.txt",
-                        DateTime.Now.DayOfWeek.ToString() + "\t" +
-                        DateTime.Now.ToString() + "\t" + res + Environment.NewLine);
-
-                }
-                catch (Exception exception)
-                {
-                    System.Console.Write(exception.StackTrace);
-                }
+                Form2 form2 = new Form2();
+                form2.Show();
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            messageTime = maskedTextBox1.Text + " " + comboBox1.Text;
+            //messageTime = maskedTextBox1.Text + " " + comboBox1.Text;
+            messageTime = reminderTimePicker.Text;
             if (!reminderTimes.ContainsKey(messageTime))
             {
                 reminderTimes.Add(messageTime, DateTime.MinValue);
                 timesListBox.Items.Add(messageTime);
+
                 Properties.Settings.Default.selectedTimes.Add(messageTime);
                 Properties.Settings.Default.Save();
 
@@ -113,25 +105,36 @@ namespace ReminderApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            reminderTimePicker.Format = DateTimePickerFormat.Time;
+            reminderTimePicker.ShowUpDown = true;
+
             if (!string.IsNullOrEmpty(Properties.Settings.Default.filePath)) { 
                 filePath.Text = Properties.Settings.Default.filePath;
                 selectedFilePath = Properties.Settings.Default.filePath;
-                if (Properties.Settings.Default.selectedTimes != null)
+            }
+            if (Properties.Settings.Default.selectedTimes != null)
+            {
+                foreach (var item in Properties.Settings.Default.selectedTimes)
                 {
-                    foreach (var item in Properties.Settings.Default.selectedTimes)
-                    {
-                        timesListBox.Items.Add(item);
-                    }
-                    //timesListBox.Items.Add(Properties.Settings.Default.selectedTimes);
-                    foreach (var item in timesListBox.Items)
-                    {
-                        reminderTimes.Add(item.ToString(), DateTime.MinValue);
-                    }
-                } else
+                    timesListBox.Items.Add(item);
+                }
+
+                foreach (var item in timesListBox.Items)
                 {
-                    Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
+                    reminderTimes.Add(item.ToString(), DateTime.MinValue);
                 }
             }
+            else
+            {
+                Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
+            }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+        }
+
     }
 }

@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -45,6 +43,7 @@
             this.errorText = new System.Windows.Forms.Label();
             this.filePath = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
+            this.reminderTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -66,39 +65,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Time";
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(6, 207);
-            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.maskedTextBox1.Mask = "00:00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(81, 24);
-            this.maskedTextBox1.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.comboBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "AM",
-            "PM"});
-            this.comboBox1.Location = new System.Drawing.Point(88, 207);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(44, 24);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.Text = "AM";
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(242, 256);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Location = new System.Drawing.Point(235, 241);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(22, 18);
+            this.button3.Size = new System.Drawing.Size(29, 27);
             this.button3.TabIndex = 8;
-            this.button3.Text = "V";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -110,7 +85,7 @@
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "Timesheet Remind now minimised.";
+            this.notifyIcon1.BalloonTipText = "Timesheet Reminder is now minimised.";
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Timesheet Reminder";
             this.notifyIcon1.Visible = true;
@@ -119,7 +94,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(134, 207);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(82, 22);
             this.button4.TabIndex = 10;
@@ -131,7 +106,7 @@
             // 
             this.timesListBox.FormattingEnabled = true;
             this.timesListBox.Location = new System.Drawing.Point(6, 74);
-            this.timesListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timesListBox.Margin = new System.Windows.Forms.Padding(2);
             this.timesListBox.Name = "timesListBox";
             this.timesListBox.Size = new System.Drawing.Size(196, 108);
             this.timesListBox.TabIndex = 11;
@@ -149,7 +124,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(202, 74);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(62, 25);
             this.button1.TabIndex = 13;
@@ -170,7 +145,7 @@
             // filePath
             // 
             this.filePath.Location = new System.Drawing.Point(6, 32);
-            this.filePath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.filePath.Margin = new System.Windows.Forms.Padding(2);
             this.filePath.Name = "filePath";
             this.filePath.Size = new System.Drawing.Size(196, 20);
             this.filePath.TabIndex = 15;
@@ -178,7 +153,7 @@
             // browseButton
             // 
             this.browseButton.Location = new System.Drawing.Point(202, 29);
-            this.browseButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.browseButton.Margin = new System.Windows.Forms.Padding(2);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(58, 22);
             this.browseButton.TabIndex = 16;
@@ -186,11 +161,20 @@
             this.browseButton.UseVisualStyleBackColor = true;
             this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
+            // reminderTimePicker
+            // 
+            this.reminderTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reminderTimePicker.Location = new System.Drawing.Point(9, 207);
+            this.reminderTimePicker.Name = "reminderTimePicker";
+            this.reminderTimePicker.Size = new System.Drawing.Size(120, 22);
+            this.reminderTimePicker.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 279);
+            this.ClientSize = new System.Drawing.Size(270, 274);
+            this.Controls.Add(this.reminderTimePicker);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.filePath);
             this.Controls.Add(this.errorText);
@@ -199,12 +183,11 @@
             this.Controls.Add(this.timesListBox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -219,8 +202,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
@@ -232,6 +213,7 @@
         private System.Windows.Forms.Label errorText;
         private System.Windows.Forms.TextBox filePath;
         private System.Windows.Forms.Button browseButton;
+        private System.Windows.Forms.DateTimePicker reminderTimePicker;
     }
 }
 
