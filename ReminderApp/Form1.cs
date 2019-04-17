@@ -128,6 +128,8 @@ namespace ReminderApp
             {
                 Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
             }
+
+            minimiseCheckbox.Checked = Properties.Settings.Default.minimiseOnStart;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -136,5 +138,19 @@ namespace ReminderApp
             form2.Show();
         }
 
+        private void minimiseCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.minimiseOnStart = minimiseCheckbox.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.minimiseOnStart)
+            {
+                this.Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
     }
 }

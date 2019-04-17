@@ -93,5 +93,17 @@ namespace ReminderApp.Properties {
                 this["lastBookedHours"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool minimiseOnStart {
+            get {
+                return ((bool)(this["minimiseOnStart"]));
+            }
+            set {
+                this["minimiseOnStart"] = value;
+            }
+        }
     }
 }

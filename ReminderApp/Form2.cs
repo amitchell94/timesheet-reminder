@@ -46,7 +46,7 @@ namespace ReminderApp
                     
                     timesheet = (HTMLDocument)Web_V1.Document;
 
-                    teamCheckBox = (HTMLInputElement)timesheet.all.item("ContentPlaceHolder1_RadioButtonListProjects_2", 0);
+                    teamCheckBox = (HTMLInputElement)timesheet.all.item("ContentPlaceHolder1_RadioButtonListProjects_2",0);
 
                     teamCheckBox.@checked = true;
 
@@ -123,7 +123,7 @@ namespace ReminderApp
                     {
                         string selectedFilePath = Properties.Settings.Default.filePath;
                         File.AppendAllText(selectedFilePath + "\\Timesheet.txt",
-                            DateTime.Now.DayOfWeek.ToString() + "\t" +
+                            DateTime.Now.DayOfWeek.ToString().Substring(0,3) + "\t" +
                             DateTime.Now.ToString() + "\t" + noteTextBox.Text + Environment.NewLine);
                     } else
                     {
