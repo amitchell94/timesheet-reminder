@@ -28,13 +28,14 @@ namespace ReminderApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            currentTime = DateTime.Now.ToString("hh:mm:ss");
+            currentTime = DateTime.Now.ToString("HH:mm:ss");
             label1.Text = currentTime;
             TimeSpan fiveMinutes = new TimeSpan(0, 5 ,0);
             DateTime fiveMinutesAgo = DateTime.Now.Subtract(fiveMinutes);
 
             //Check whether the current time is in the list, if so then check that last time it was checked was longer than 5 minutes ago.
-            if (reminderTimes.ContainsKey(currentTime) && ((DateTime.Compare(reminderTimes[currentTime], fiveMinutesAgo)) < 0))
+            if (reminderTimes.ContainsKey(currentTime) && ((DateTime.Compare(reminderTimes[currentTime], fiveMinutesAgo)) < 0) 
+                && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
             {
                 reminderTimes[currentTime] = DateTime.Now;
 
@@ -45,7 +46,7 @@ namespace ReminderApp
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //messageTime = maskedTextBox1.Text + " " + comboBox1.Text;
+            
             messageTime = reminderTimePicker.Text;
             if (!reminderTimes.ContainsKey(messageTime))
             {
@@ -151,6 +152,12 @@ namespace ReminderApp
                 this.Hide();
                 notifyIcon1.Visible = true;
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
         }
     }
 }
