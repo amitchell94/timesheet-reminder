@@ -105,5 +105,28 @@ namespace ReminderApp.Properties {
                 this["minimiseOnStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection prevTenBookings {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["prevTenBookings"]));
+            }
+            set {
+                this["prevTenBookings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastBookedTechnology {
+            get {
+                return ((string)(this["lastBookedTechnology"]));
+            }
+            set {
+                this["lastBookedTechnology"] = value;
+            }
+        }
     }
 }
