@@ -68,6 +68,7 @@ namespace ReminderApp
                     ListViewItem item = new ListViewItem(bookingRow);
                     bookingsListView.Items.Add(item);
                     AdjustDescColumnToFill(bookingsListView);
+
                     if (bookingList.Count >= 10) { break; }
                 }
             } else

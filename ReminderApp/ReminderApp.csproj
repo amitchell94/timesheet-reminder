@@ -57,6 +57,12 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="MovementEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovementEntry.Designer.cs">
+      <DependentUpon>MovementEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="OvertimeBooking.cs" />
     <Compile Include="OvertimeFormGenerator.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovementEntry.resx">
+      <DependentUpon>MovementEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OvertimeFormGenerator.resx">
       <DependentUpon>OvertimeFormGenerator.cs</DependentUpon>

@@ -31,9 +31,6 @@ namespace ReminderApp
                 MainWindow.reminderTimes.Add(messageTime, DateTime.MinValue);
                 timesListBox.Items.Add(messageTime);
 
-                Properties.Settings.Default.selectedTimes.Add(messageTime);
-                Properties.Settings.Default.Save();
-
                 errorText.Text = "";
             }
             else
@@ -47,10 +44,8 @@ namespace ReminderApp
             if (timesListBox.SelectedIndex != -1)
             {
                 MainWindow.reminderTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
-                Properties.Settings.Default.selectedTimes.Remove(timesListBox.Items[timesListBox.SelectedIndex].ToString());
                 timesListBox.Items.Remove(timesListBox.Items[timesListBox.SelectedIndex]);
 
-                Properties.Settings.Default.Save();
                 errorText.Text = "";
             }
             else
@@ -65,8 +60,6 @@ namespace ReminderApp
             {
                 selectedFilePath = folderBrowserDialog.SelectedPath;
                 filePath.Text = selectedFilePath;
-                Properties.Settings.Default.filePath = selectedFilePath;
-                Properties.Settings.Default.Save();
             }
         }
 
@@ -87,15 +80,38 @@ namespace ReminderApp
                     timesListBox.Items.Add(item);
                 }
 
-                foreach (var item in timesListBox.Items)
-                {
-                    MainWindow.reminderTimes.Add(item.ToString(), DateTime.MinValue);
-                }
+
             }
             else
             {
                 Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
             }
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            MainWindow.reminderTimes.Clear();
+
+            foreach (var item in timesListBox.Items)
+            {
+                MainWindow.reminderTimes.Add(item.ToString(), DateTime.MinValue);
+            }
+
+            Properties.Settings.Default.selectedTimes.Clear();
+
+            foreach (string time in timesListBox.Items)
+            {
+                Properties.Settings.Default.selectedTimes.Add(time);
+            }
+            
+            Properties.Settings.Default.filePath = selectedFilePath;
+            Properties.Settings.Default.Save();
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

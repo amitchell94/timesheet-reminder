@@ -198,9 +198,12 @@ namespace ReminderApp
             string copyText = String.Empty;
             foreach (var booking in currentBookings)
             {
-                copyText += booking.date + "\t" + booking.projectNo + "\t" + booking.description + "\t" + booking.hours + "\t" + booking.multiplier + "\n";
+                copyText += booking.date + "\t" + booking.projectNo + "\t" + "Working/travelling more than 7.5 hours" + "\t" + booking.description + "\t\t" + booking.hours + "\t" + booking.multiplier + "\n";
             }
-            
+
+            //Remove final return character
+            copyText = copyText.Substring(0, copyText.Length - 1);
+
             System.Windows.Forms.Clipboard.SetText(copyText);
         }
 

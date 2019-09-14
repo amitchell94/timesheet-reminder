@@ -128,5 +128,77 @@ namespace ReminderApp.Properties {
                 this["lastBookedTechnology"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool enableTimesheetReminders {
+            get {
+                return ((bool)(this["enableTimesheetReminders"]));
+            }
+            set {
+                this["enableTimesheetReminders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool enableMovementReminders {
+            get {
+                return ((bool)(this["enableMovementReminders"]));
+            }
+            set {
+                this["enableMovementReminders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string movementDay {
+            get {
+                return ((string)(this["movementDay"]));
+            }
+            set {
+                this["movementDay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string movementTime {
+            get {
+                return ((string)(this["movementTime"]));
+            }
+            set {
+                this["movementTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool movementCurrentWeek {
+            get {
+                return ((bool)(this["movementCurrentWeek"]));
+            }
+            set {
+                this["movementCurrentWeek"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool movementsAutofill {
+            get {
+                return ((bool)(this["movementsAutofill"]));
+            }
+            set {
+                this["movementsAutofill"] = value;
+            }
+        }
     }
 }

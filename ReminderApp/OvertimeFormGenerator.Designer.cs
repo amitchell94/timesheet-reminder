@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OvertimeFormGenerator));
             this.thisMonthButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lastMonthButton = new System.Windows.Forms.Button();
@@ -160,8 +161,9 @@
             this.Controls.Add(this.lastMonthButton);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.thisMonthButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OvertimeFormGenerator";
-            this.Text = "OvertimeFormGenerator";
+            this.Text = "Overtime Form Generator";
             this.Load += new System.EventHandler(this.OvertimeFormGenerator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

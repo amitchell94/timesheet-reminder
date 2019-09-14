@@ -20,6 +20,7 @@ namespace ReminderApp
         string messageTime;
         string selectedFilePath;
         public static Dictionary<string, DateTime> reminderTimes = new Dictionary<string, DateTime>() ;
+        DateTime lastTimeMovementsReminded = DateTime.MinValue;
 
         public MainWindow()
         {
@@ -34,13 +35,23 @@ namespace ReminderApp
             DateTime fiveMinutesAgo = DateTime.Now.Subtract(fiveMinutes);
 
             //Check whether the current time is in the list, if so then check that last time it was checked was longer than 5 minutes ago.
+            //This is to stop us having loads of windows pop up at one time.
             if (reminderTimes.ContainsKey(currentTime) && ((DateTime.Compare(reminderTimes[currentTime], fiveMinutesAgo)) < 0) 
                 && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
             {
                 reminderTimes[currentTime] = DateTime.Now;
+                if (enableTimesheetReminder.Checked)
+                {
+                    TimesheetEntry timesheetEntry = new TimesheetEntry();
+                    timesheetEntry.Show();
+                }
+            }
 
-                TimesheetEntry timesheetEntry = new TimesheetEntry();
-                timesheetEntry.Show();
+            if (DateTime.Now.ToString("dddd") == Properties.Settings.Default.movementDay && Properties.Settings.Default.movementTime == currentTime &&
+                ((DateTime.Compare(lastTimeMovementsReminded, fiveMinutesAgo)) < 0) && enableMovements.Checked)
+            {
+                MovementEntry movementEntry = new MovementEntry(Properties.Settings.Default.movementCurrentWeek);
+                lastTimeMovementsReminded = DateTime.Now;
             }
         }
 
@@ -61,9 +72,11 @@ namespace ReminderApp
         private void Form1_Load(object sender, EventArgs e)
         {
             minimiseCheckbox.Checked = Properties.Settings.Default.minimiseOnStart;
+            enableMovements.Checked = Properties.Settings.Default.enableMovementReminders;
+            enableTimesheetReminder.Checked = Properties.Settings.Default.enableTimesheetReminders;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bookNowButton_Click(object sender, EventArgs e)
         {
             TimesheetEntry timesheetEntry = new TimesheetEntry();
             timesheetEntry.Show();
@@ -106,6 +119,53 @@ namespace ReminderApp
         {
             OvertimeFormGenerator overtimeFormGenerator = new OvertimeFormGenerator();
             overtimeFormGenerator.Show();
+        }
+
+        private void enableTimesheetReminder_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.enableTimesheetReminders = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void fillThisWeek_Click(object sender, EventArgs e)
+        {
+            MovementEntry movementEntry = new MovementEntry(true);
+            movementEntry.Show();
+        }
+
+        private void fillNextWeek_Click(object sender, EventArgs e)
+        {
+            MovementEntry movementEntry = new MovementEntry(false);
+            movementEntry.Show();
+        }
+
+        private void enableMovements_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.enableMovementReminders = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void timesheetBooking_Click(object sender, EventArgs e)
+        {
+            TimesheetEntry timesheetEntry = new TimesheetEntry();
+            timesheetEntry.Show();
+        }
+
+        private void movementsThisWeek_Click(object sender, EventArgs e)
+        {
+            MovementEntry movementEntry = new MovementEntry(true);
+            movementEntry.Show();
+        }
+
+        private void movementsNextWeek_Click(object sender, EventArgs e)
+        {
+            MovementEntry movementEntry = new MovementEntry(false);
+            movementEntry.Show();
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
