@@ -17,10 +17,13 @@ namespace ReminderApp
     public partial class MainWindow : Form
     {
         string currentTime;
-        string messageTime;
-        string selectedFilePath;
+
         public static Dictionary<string, DateTime> reminderTimes = new Dictionary<string, DateTime>() ;
         DateTime lastTimeMovementsReminded = DateTime.MinValue;
+        DateTime lastTimeMovementsFilled = DateTime.MinValue;
+        DateTime lastTimeMovementsFillAttempted = DateTime.MinValue;
+        
+       
 
         public MainWindow()
         {
@@ -47,19 +50,34 @@ namespace ReminderApp
                 }
             }
 
-            if (DateTime.Now.ToString("dddd") == Properties.Settings.Default.movementDay && Properties.Settings.Default.movementTime == currentTime &&
-                ((DateTime.Compare(lastTimeMovementsReminded, fiveMinutesAgo)) < 0) && enableMovements.Checked)
+            if (enableMovements.Checked && DateTime.Now.ToString("dddd") == Properties.Settings.Default.movementDay && Properties.Settings.Default.movementTime == currentTime &&
+                ((DateTime.Compare(lastTimeMovementsReminded, fiveMinutesAgo)) < 0))
             {
                 MovementEntry movementEntry = new MovementEntry(Properties.Settings.Default.movementCurrentWeek);
+                movementEntry.Show();
                 lastTimeMovementsReminded = DateTime.Now;
             }
-        }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            notifyIcon1.Visible = true;
-            this.Hide();
-            notifyIcon1.ShowBalloonTip(3000);
+
+            if (Properties.Settings.Default.movementsAutofill)
+            {
+                DateTime lastSaturday = DateTime.Now.AddDays(-1);
+                while (lastSaturday.DayOfWeek != DayOfWeek.Saturday)
+                {
+                    lastSaturday = lastSaturday.AddDays(-1);
+                }
+          
+                //This is to make sure we only attempt to fill in movements once per hour.
+                TimeSpan oneHour = new TimeSpan(1, 0, 0);
+                DateTime oneHourAgo = DateTime.Now.Subtract(oneHour);
+
+                if (((DateTime.Compare(lastTimeMovementsFilled, lastSaturday) < 0)) && (DateTime.Compare(lastTimeMovementsFillAttempted, oneHourAgo) < 0))
+                {
+                    lastTimeMovementsFillAttempted = DateTime.Now;
+                    webBrowser1.ScriptErrorsSuppressed = true;
+                    webBrowser1.Navigate(new Uri("http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx"));
+                }
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -74,6 +92,19 @@ namespace ReminderApp
             minimiseCheckbox.Checked = Properties.Settings.Default.minimiseOnStart;
             enableMovements.Checked = Properties.Settings.Default.enableMovementReminders;
             enableTimesheetReminder.Checked = Properties.Settings.Default.enableTimesheetReminders;
+
+            reminderTimes.Clear();
+            if (Properties.Settings.Default.selectedTimes != null)
+            {
+                foreach (var item in Properties.Settings.Default.selectedTimes)
+                {
+                    reminderTimes.Add(item.ToString(), DateTime.MinValue);
+                }
+            }
+            else
+            {
+                Properties.Settings.Default.selectedTimes = new System.Collections.Specialized.StringCollection();
+            }
         }
 
         private void bookNowButton_Click(object sender, EventArgs e)
@@ -166,6 +197,37 @@ namespace ReminderApp
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            try
+            {
+                if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+                {
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx")
+                    {
+                        MovementFiller.fillAllMovements((SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance);
+                    }
+                }
+            } catch (Exception exception)
+            {
+                lastTimeMovementsFilled = DateTime.MinValue;
+                return;
+            }
+
+            lastTimeMovementsFilled = DateTime.Now;
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                notifyIcon1.Visible = true;
+                this.Hide();
+                notifyIcon1.ShowBalloonTip(3000);
+                e.Cancel = true;
+            }
         }
     }
 }

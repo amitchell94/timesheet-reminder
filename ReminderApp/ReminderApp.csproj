@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cougarico_sMu_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -63,6 +66,7 @@
     <Compile Include="MovementEntry.Designer.cs">
       <DependentUpon>MovementEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="MovementFiller.cs" />
     <Compile Include="OvertimeBooking.cs" />
     <Compile Include="OvertimeFormGenerator.cs">
       <SubType>Form</SubType>
@@ -140,6 +144,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cougarico_sMu_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
