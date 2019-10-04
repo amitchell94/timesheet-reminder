@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovementEntry));
             this.movementsGroupBox = new System.Windows.Forms.GroupBox();
-            this.mondayInput = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tuesdayInput = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.wednesdayInput = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.thursdayInput = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.fridayInput = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.label4 = new System.Windows.Forms.Label();
+            this.thursdayInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.wednesdayInput = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tuesdayInput = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mondayInput = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.fillEmptys = new System.Windows.Forms.Button();
             this.movementsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,108 +60,127 @@
             this.movementsGroupBox.Controls.Add(this.tuesdayInput);
             this.movementsGroupBox.Controls.Add(this.label1);
             this.movementsGroupBox.Controls.Add(this.mondayInput);
-            this.movementsGroupBox.Location = new System.Drawing.Point(13, 13);
+            this.movementsGroupBox.Location = new System.Drawing.Point(10, 11);
+            this.movementsGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.movementsGroupBox.Name = "movementsGroupBox";
-            this.movementsGroupBox.Size = new System.Drawing.Size(287, 306);
+            this.movementsGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.movementsGroupBox.Size = new System.Drawing.Size(215, 249);
             this.movementsGroupBox.TabIndex = 0;
             this.movementsGroupBox.TabStop = false;
             this.movementsGroupBox.Text = "Movements";
             // 
-            // mondayInput
-            // 
-            this.mondayInput.Location = new System.Drawing.Point(6, 53);
-            this.mondayInput.Name = "mondayInput";
-            this.mondayInput.Size = new System.Drawing.Size(275, 22);
-            this.mondayInput.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Monday";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tuesday";
-            // 
-            // tuesdayInput
-            // 
-            this.tuesdayInput.Location = new System.Drawing.Point(6, 107);
-            this.tuesdayInput.Name = "tuesdayInput";
-            this.tuesdayInput.Size = new System.Drawing.Size(275, 22);
-            this.tuesdayInput.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Wednesday";
-            // 
-            // wednesdayInput
-            // 
-            this.wednesdayInput.Location = new System.Drawing.Point(6, 158);
-            this.wednesdayInput.Name = "wednesdayInput";
-            this.wednesdayInput.Size = new System.Drawing.Size(275, 22);
-            this.wednesdayInput.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Thursday";
-            // 
-            // thursdayInput
-            // 
-            this.thursdayInput.Location = new System.Drawing.Point(6, 211);
-            this.thursdayInput.Name = "thursdayInput";
-            this.thursdayInput.Size = new System.Drawing.Size(275, 22);
-            this.thursdayInput.TabIndex = 6;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 246);
+            this.label5.Location = new System.Drawing.Point(4, 200);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 17);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Friday";
             // 
             // fridayInput
             // 
-            this.fridayInput.Location = new System.Drawing.Point(6, 266);
+            this.fridayInput.Location = new System.Drawing.Point(4, 216);
+            this.fridayInput.Margin = new System.Windows.Forms.Padding(2);
             this.fridayInput.Name = "fridayInput";
-            this.fridayInput.Size = new System.Drawing.Size(275, 22);
+            this.fridayInput.Size = new System.Drawing.Size(207, 20);
             this.fridayInput.TabIndex = 8;
+            this.fridayInput.Enter += new System.EventHandler(this.fridayInput_Enter);
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(-16, -14);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Location = new System.Drawing.Point(-12, -11);
+            this.webBrowser1.Margin = new System.Windows.Forms.Padding(2);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(15, 16);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(20, 43);
+            this.webBrowser1.Size = new System.Drawing.Size(15, 35);
             this.webBrowser1.TabIndex = 1;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 155);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Thursday";
+            // 
+            // thursdayInput
+            // 
+            this.thursdayInput.Location = new System.Drawing.Point(4, 171);
+            this.thursdayInput.Margin = new System.Windows.Forms.Padding(2);
+            this.thursdayInput.Name = "thursdayInput";
+            this.thursdayInput.Size = new System.Drawing.Size(207, 20);
+            this.thursdayInput.TabIndex = 6;
+            this.thursdayInput.Enter += new System.EventHandler(this.thursdayInput_Enter);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 112);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Wednesday";
+            // 
+            // wednesdayInput
+            // 
+            this.wednesdayInput.Location = new System.Drawing.Point(4, 128);
+            this.wednesdayInput.Margin = new System.Windows.Forms.Padding(2);
+            this.wednesdayInput.Name = "wednesdayInput";
+            this.wednesdayInput.Size = new System.Drawing.Size(207, 20);
+            this.wednesdayInput.TabIndex = 4;
+            this.wednesdayInput.Enter += new System.EventHandler(this.wednesdayInput_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Tuesday";
+            // 
+            // tuesdayInput
+            // 
+            this.tuesdayInput.Location = new System.Drawing.Point(4, 87);
+            this.tuesdayInput.Margin = new System.Windows.Forms.Padding(2);
+            this.tuesdayInput.Name = "tuesdayInput";
+            this.tuesdayInput.Size = new System.Drawing.Size(207, 20);
+            this.tuesdayInput.TabIndex = 2;
+            this.tuesdayInput.Enter += new System.EventHandler(this.tuesdayInput_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Monday";
+            // 
+            // mondayInput
+            // 
+            this.mondayInput.Location = new System.Drawing.Point(4, 43);
+            this.mondayInput.Margin = new System.Windows.Forms.Padding(2);
+            this.mondayInput.Name = "mondayInput";
+            this.mondayInput.Size = new System.Drawing.Size(207, 20);
+            this.mondayInput.TabIndex = 0;
+            this.mondayInput.Enter += new System.EventHandler(this.mondayInput_Enter);
+            // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(59, 325);
+            this.okButton.Location = new System.Drawing.Point(51, 304);
+            this.okButton.Margin = new System.Windows.Forms.Padding(2);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(78, 29);
+            this.okButton.Size = new System.Drawing.Size(58, 24);
             this.okButton.TabIndex = 2;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
@@ -168,23 +188,36 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(158, 325);
+            this.cancelButton.Location = new System.Drawing.Point(125, 304);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(78, 29);
+            this.cancelButton.Size = new System.Drawing.Size(58, 24);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // fillEmptys
+            // 
+            this.fillEmptys.Location = new System.Drawing.Point(51, 271);
+            this.fillEmptys.Name = "fillEmptys";
+            this.fillEmptys.Size = new System.Drawing.Size(132, 23);
+            this.fillEmptys.TabIndex = 4;
+            this.fillEmptys.Text = "Fill empty days with IN";
+            this.fillEmptys.UseVisualStyleBackColor = true;
+            this.fillEmptys.Click += new System.EventHandler(this.fillEmptys_Click);
+            // 
             // MovementEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 362);
+            this.ClientSize = new System.Drawing.Size(233, 343);
+            this.Controls.Add(this.fillEmptys);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.movementsGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MovementEntry";
             this.Text = "Movement Entry";
             this.Load += new System.EventHandler(this.MovementEntry_Load);
@@ -210,5 +243,6 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button fillEmptys;
     }
 }

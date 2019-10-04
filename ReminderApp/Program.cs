@@ -20,14 +20,12 @@ namespace ReminderApp
         }
 
         //TODO:
-        //Add checkbox to ask if user wants app to start minimised to tray
-        //Deal with filePath errors
-        //Add recently selected projects
-        //Add other dropdowns from timesheet page
-        //Deal with connection errors
-        //Add time reminded in popup title
+        //Delete note taking file path
+        //Confirm recently booked projects is working as expected.
+        //Add radio buttons for all, teams, projects.
+        //Add help file?
+        //Add version no.?
         //Backlog unsubmitted timesheet entries?
-        //Add context menu to notificon
         //Reduce the amount of times checked?
     }
 }

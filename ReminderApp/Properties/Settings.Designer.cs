@@ -200,5 +200,29 @@ namespace ReminderApp.Properties {
                 this["movementsAutofill"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastBookedExtension {
+            get {
+                return ((string)(this["lastBookedExtension"]));
+            }
+            set {
+                this["lastBookedExtension"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastBookedOvertime {
+            get {
+                return ((string)(this["lastBookedOvertime"]));
+            }
+            set {
+                this["lastBookedOvertime"] = value;
+            }
+        }
     }
 }

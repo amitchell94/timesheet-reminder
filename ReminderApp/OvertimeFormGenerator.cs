@@ -42,48 +42,54 @@ namespace ReminderApp
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+            try
             {
-                if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Timesheet/Timesheet.aspx")
+                if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
                 {
-                    Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
-
-                    timesheet = (HTMLDocument)Web_V1.Document;
-
-                    bookingsTable = (HTMLTable)timesheet.all.item("ContentPlaceHolder1_GridViewSessions", 0);
-
-                    if (bookingsTable != null)
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Timesheet/Timesheet.aspx")
                     {
-                        bookingsTableInnerHTML = bookingsTable.innerHTML;
-                    }
-                    else
-                    {
-                        bookingsTableInnerHTML = "";
-                    }
+                        Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
 
-                    if (!thisMonth)
-                    {
-                        var anchorElements = timesheet.getElementsByTagName("a");
+                        timesheet = (HTMLDocument)Web_V1.Document;
 
-                        foreach (HTMLAnchorElement item in anchorElements)
+                        bookingsTable = (HTMLTable)timesheet.all.item("ContentPlaceHolder1_GridViewSessions", 0);
+
+                        if (bookingsTable != null)
                         {
-                            if (item.title == "Go to the previous month")
-                            {
-                                item.click();
-                            }
+                            bookingsTableInnerHTML = bookingsTable.innerHTML;
+                        }
+                        else
+                        {
+                            bookingsTableInnerHTML = "";
                         }
 
-                        timer1.Start();
-                    }
-                    else
-                    {
-                        HTMLInputElement monthRadioButton = (HTMLInputElement)timesheet.all.item("ContentPlaceHolder1_RadioButtonListSessions_2", 0);
-                        monthRadioButton.click();
-                        timer1.Start();
-                    }
+                        if (!thisMonth)
+                        {
+                            var anchorElements = timesheet.getElementsByTagName("a");
+
+                            foreach (HTMLAnchorElement item in anchorElements)
+                            {
+                                if (item.title == "Go to the previous month")
+                                {
+                                    item.click();
+                                }
+                            }
+
+                            timer1.Start();
+                        }
+                        else
+                        {
+                            HTMLInputElement monthRadioButton = (HTMLInputElement)timesheet.all.item("ContentPlaceHolder1_RadioButtonListSessions_2", 0);
+                            monthRadioButton.click();
+                            timer1.Start();
+                        }
 
 
+                    }
                 }
+            } catch (Exception exception)
+            {
+                MessageBox.Show("Unable to connect to timesheet page, please check your connection");
             }
         }
 

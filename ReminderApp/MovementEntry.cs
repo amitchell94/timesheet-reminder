@@ -55,49 +55,56 @@ namespace ReminderApp
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
+            try
             {
-                if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx")
+                if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
                 {
-
-                    Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
-
-                    HTMLDocument movements = new HTMLDocument();
-                    movements = (HTMLDocument)Web_V1.Document;
-
-
-                    if (thisWeek)
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx")
                     {
-                        htmlMonInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisMonday", 0);
-                        htmlTueInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisTuesday", 0);
-                        htmlWedInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisWednesday", 0);
-                        htmlThuInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisThursday", 0);
-                        htmlFriInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisFriday", 0);
-                    }
-                    else
-                    {
-                        htmlMonInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextMonday", 0);
-                        htmlTueInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextTuesday", 0);
-                        htmlWedInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextWednesday", 0);
-                        htmlThuInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextThursday", 0);
-                        htmlFriInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextFriday", 0);
-                    }
 
-                    setDayText(htmlMonInput, mondayInput);
-                    setDayText(htmlTueInput, tuesdayInput);
-                    setDayText(htmlWedInput, wednesdayInput);
-                    setDayText(htmlThuInput, thursdayInput);
-                    setDayText(htmlFriInput, fridayInput);
+                        Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
 
-                    submitButton = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_ButtonAccept", 0);
-                    
-                    okButton.Enabled = true;
-                    mondayInput.Enabled = true;
-                    tuesdayInput.Enabled = true;
-                    wednesdayInput.Enabled = true;
-                    thursdayInput.Enabled = true;
-                    fridayInput.Enabled = true;
+                        HTMLDocument movements = new HTMLDocument();
+                        movements = (HTMLDocument)Web_V1.Document;
+
+
+                        if (thisWeek)
+                        {
+                            htmlMonInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisMonday", 0);
+                            htmlTueInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisTuesday", 0);
+                            htmlWedInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisWednesday", 0);
+                            htmlThuInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisThursday", 0);
+                            htmlFriInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxThisFriday", 0);
+                        }
+                        else
+                        {
+                            htmlMonInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextMonday", 0);
+                            htmlTueInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextTuesday", 0);
+                            htmlWedInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextWednesday", 0);
+                            htmlThuInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextThursday", 0);
+                            htmlFriInput = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_TextBoxNextFriday", 0);
+                        }
+
+                        setDayText(htmlMonInput, mondayInput);
+                        setDayText(htmlTueInput, tuesdayInput);
+                        setDayText(htmlWedInput, wednesdayInput);
+                        setDayText(htmlThuInput, thursdayInput);
+                        setDayText(htmlFriInput, fridayInput);
+
+                        submitButton = (HTMLInputElement)movements.all.item("ContentPlaceHolder1_ButtonAccept", 0);
+
+                        okButton.Enabled = true;
+                        mondayInput.Enabled = true;
+                        tuesdayInput.Enabled = true;
+                        wednesdayInput.Enabled = true;
+                        thursdayInput.Enabled = true;
+                        fridayInput.Enabled = true;
+                    }
                 }
+            } catch (Exception exception)
+            {
+                MessageBox.Show("Unable to connect to movements page, please check your connection");
+                this.Close();
             }
         }
 
@@ -128,6 +135,68 @@ namespace ReminderApp
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void mondayInput_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                mondayInput.SelectAll();
+            });
+        }
+
+        private void tuesdayInput_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                tuesdayInput.SelectAll();
+            });
+        }
+
+        private void wednesdayInput_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                wednesdayInput.SelectAll();
+            });
+        }
+
+        private void thursdayInput_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                thursdayInput.SelectAll();
+            });
+        }
+
+        private void fridayInput_Enter(object sender, EventArgs e)
+        {
+            // Kick off SelectAll asyncronously so that it occurs after Click
+            BeginInvoke((Action)delegate
+            {
+                fridayInput.SelectAll();
+            });
+        }
+
+        private void fillEmptys_Click(object sender, EventArgs e)
+        {
+            checkAndFillWithIn(mondayInput);
+            checkAndFillWithIn(tuesdayInput);
+            checkAndFillWithIn(wednesdayInput);
+            checkAndFillWithIn(thursdayInput);
+            checkAndFillWithIn(fridayInput);
+        }
+
+        private void checkAndFillWithIn (TextBox textBox)
+        {
+            if (textBox.Text == String.Empty)
+            {
+                textBox.Text = "IN";
+            }
         }
     }
 }
