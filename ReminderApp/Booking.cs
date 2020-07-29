@@ -9,5 +9,6 @@
         public string description { get; set; }
         public string bookedHours { get; set; }
         public string overtime { get; set; }
+        public string radioButton { get; set; }
     }
 }

@@ -25,18 +25,6 @@ namespace ReminderApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string filePath {
-            get {
-                return ((string)(this["filePath"]));
-            }
-            set {
-                this["filePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Specialized.StringCollection selectedTimes {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["selectedTimes"]));
@@ -222,6 +210,18 @@ namespace ReminderApp.Properties {
             }
             set {
                 this["lastBookedOvertime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastBookedRadioButton {
+            get {
+                return ((string)(this["lastBookedRadioButton"]));
+            }
+            set {
+                this["lastBookedRadioButton"] = value;
             }
         }
     }

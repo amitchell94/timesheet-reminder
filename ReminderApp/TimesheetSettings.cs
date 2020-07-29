@@ -14,7 +14,6 @@ namespace ReminderApp
     public partial class TimesheetSettings : Form
     {
         string messageTime;
-        string selectedFilePath;
 
         public TimesheetSettings()
         {
@@ -52,35 +51,18 @@ namespace ReminderApp
                 errorText.Text = "No time to remove.";
         }
 
-        private void browseButton_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                selectedFilePath = folderBrowserDialog.SelectedPath;
-                filePath.Text = selectedFilePath;
-            }
-        }
 
         private void TimesheetSettings_Load(object sender, EventArgs e)
         {
             reminderTimePicker.Format = DateTimePickerFormat.Time;
             reminderTimePicker.ShowUpDown = true;
 
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.filePath))
-            {
-                filePath.Text = Properties.Settings.Default.filePath;
-                selectedFilePath = Properties.Settings.Default.filePath;
-            }
             if (Properties.Settings.Default.selectedTimes != null)
             {
                 foreach (var item in Properties.Settings.Default.selectedTimes)
                 {
                     timesListBox.Items.Add(item);
                 }
-
-
             }
             else
             {
@@ -104,7 +86,6 @@ namespace ReminderApp
                 Properties.Settings.Default.selectedTimes.Add(time);
             }
             
-            Properties.Settings.Default.filePath = selectedFilePath;
             Properties.Settings.Default.Save();
             this.Close();
         }

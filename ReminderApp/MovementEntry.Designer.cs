@@ -86,7 +86,7 @@
             this.fridayInput.Name = "fridayInput";
             this.fridayInput.Size = new System.Drawing.Size(207, 20);
             this.fridayInput.TabIndex = 8;
-            this.fridayInput.Enter += new System.EventHandler(this.fridayInput_Enter);
+            
             // 
             // webBrowser1
             // 
@@ -116,7 +116,7 @@
             this.thursdayInput.Name = "thursdayInput";
             this.thursdayInput.Size = new System.Drawing.Size(207, 20);
             this.thursdayInput.TabIndex = 6;
-            this.thursdayInput.Enter += new System.EventHandler(this.thursdayInput_Enter);
+            
             // 
             // label3
             // 
@@ -135,7 +135,7 @@
             this.wednesdayInput.Name = "wednesdayInput";
             this.wednesdayInput.Size = new System.Drawing.Size(207, 20);
             this.wednesdayInput.TabIndex = 4;
-            this.wednesdayInput.Enter += new System.EventHandler(this.wednesdayInput_Enter);
+           
             // 
             // label2
             // 
@@ -154,7 +154,7 @@
             this.tuesdayInput.Name = "tuesdayInput";
             this.tuesdayInput.Size = new System.Drawing.Size(207, 20);
             this.tuesdayInput.TabIndex = 2;
-            this.tuesdayInput.Enter += new System.EventHandler(this.tuesdayInput_Enter);
+            
             // 
             // label1
             // 
@@ -173,7 +173,7 @@
             this.mondayInput.Name = "mondayInput";
             this.mondayInput.Size = new System.Drawing.Size(207, 20);
             this.mondayInput.TabIndex = 0;
-            this.mondayInput.Enter += new System.EventHandler(this.mondayInput_Enter);
+            
             // 
             // okButton
             // 

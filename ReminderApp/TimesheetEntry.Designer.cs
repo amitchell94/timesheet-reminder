@@ -57,16 +57,21 @@
             this.Overtime1radioButton = new System.Windows.Forms.RadioButton();
             this.overtime15radioButton = new System.Windows.Forms.RadioButton();
             this.overtimer2radioButton = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.regionRadioButton = new System.Windows.Forms.RadioButton();
+            this.teamRadioButton = new System.Windows.Forms.RadioButton();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // projectComboBox
             // 
             this.projectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.projectComboBox.FormattingEnabled = true;
-            this.projectComboBox.Location = new System.Drawing.Point(15, 146);
-            this.projectComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.projectComboBox.Location = new System.Drawing.Point(11, 215);
             this.projectComboBox.Name = "projectComboBox";
-            this.projectComboBox.Size = new System.Drawing.Size(707, 24);
+            this.projectComboBox.Size = new System.Drawing.Size(531, 21);
             this.projectComboBox.TabIndex = 2;
             this.projectComboBox.SelectedIndexChanged += new System.EventHandler(this.projectComboBox_SelectedIndexChanged);
             // 
@@ -74,35 +79,31 @@
             // 
             this.codeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.codeComboBox.FormattingEnabled = true;
-            this.codeComboBox.Location = new System.Drawing.Point(15, 195);
-            this.codeComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.codeComboBox.Location = new System.Drawing.Point(11, 254);
             this.codeComboBox.Name = "codeComboBox";
-            this.codeComboBox.Size = new System.Drawing.Size(707, 24);
+            this.codeComboBox.Size = new System.Drawing.Size(531, 21);
             this.codeComboBox.TabIndex = 3;
             this.codeComboBox.SelectedIndexChanged += new System.EventHandler(this.codeComboBox_SelectedIndexChanged);
             // 
             // descTextBox
             // 
-            this.descTextBox.Location = new System.Drawing.Point(15, 296);
-            this.descTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.descTextBox.Location = new System.Drawing.Point(11, 336);
             this.descTextBox.Name = "descTextBox";
-            this.descTextBox.Size = new System.Drawing.Size(707, 22);
+            this.descTextBox.Size = new System.Drawing.Size(531, 20);
             this.descTextBox.TabIndex = 4;
             // 
             // hoursTextBox
             // 
-            this.hoursTextBox.Location = new System.Drawing.Point(282, 390);
-            this.hoursTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.hoursTextBox.Location = new System.Drawing.Point(212, 413);
             this.hoursTextBox.Name = "hoursTextBox";
-            this.hoursTextBox.Size = new System.Drawing.Size(139, 22);
+            this.hoursTextBox.Size = new System.Drawing.Size(105, 20);
             this.hoursTextBox.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(240, 477);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(180, 484);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -110,11 +111,10 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(15, 6);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(4);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(27, 25);
+            this.webBrowser1.Location = new System.Drawing.Point(11, 5);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(37, 43);
+            this.webBrowser1.Size = new System.Drawing.Size(28, 35);
             this.webBrowser1.TabIndex = 1;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -122,59 +122,53 @@
             // projectLabel
             // 
             this.projectLabel.AutoSize = true;
-            this.projectLabel.Location = new System.Drawing.Point(11, 126);
-            this.projectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.projectLabel.Location = new System.Drawing.Point(8, 198);
             this.projectLabel.Name = "projectLabel";
-            this.projectLabel.Size = new System.Drawing.Size(52, 17);
+            this.projectLabel.Size = new System.Drawing.Size(40, 13);
             this.projectLabel.TabIndex = 10;
             this.projectLabel.Text = "Project";
             // 
             // codeLabel
             // 
             this.codeLabel.AutoSize = true;
-            this.codeLabel.Location = new System.Drawing.Point(11, 175);
-            this.codeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.codeLabel.Location = new System.Drawing.Point(8, 238);
             this.codeLabel.Name = "codeLabel";
-            this.codeLabel.Size = new System.Drawing.Size(41, 17);
+            this.codeLabel.Size = new System.Drawing.Size(32, 13);
             this.codeLabel.TabIndex = 11;
             this.codeLabel.Text = "Code";
             // 
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(11, 275);
-            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.descriptionLabel.Location = new System.Drawing.Point(8, 319);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(79, 17);
+            this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
             this.descriptionLabel.TabIndex = 12;
             this.descriptionLabel.Text = "Description";
             // 
             // hoursLabel
             // 
             this.hoursLabel.AutoSize = true;
-            this.hoursLabel.Location = new System.Drawing.Point(430, 394);
-            this.hoursLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hoursLabel.Location = new System.Drawing.Point(322, 416);
             this.hoursLabel.Name = "hoursLabel";
-            this.hoursLabel.Size = new System.Drawing.Size(44, 17);
+            this.hoursLabel.Size = new System.Drawing.Size(33, 13);
             this.hoursLabel.TabIndex = 13;
             this.hoursLabel.Text = "hours";
             // 
             // bookingsLabel
             // 
             this.bookingsLabel.AutoSize = true;
-            this.bookingsLabel.Location = new System.Drawing.Point(11, 14);
-            this.bookingsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bookingsLabel.Location = new System.Drawing.Point(8, 11);
             this.bookingsLabel.Name = "bookingsLabel";
-            this.bookingsLabel.Size = new System.Drawing.Size(115, 17);
+            this.bookingsLabel.Size = new System.Drawing.Size(89, 13);
             this.bookingsLabel.TabIndex = 16;
             this.bookingsLabel.Text = "Recent Bookings";
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(402, 477);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Location = new System.Drawing.Point(302, 484);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(100, 28);
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 17;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -183,10 +177,9 @@
             // technologyLabel
             // 
             this.technologyLabel.AutoSize = true;
-            this.technologyLabel.Location = new System.Drawing.Point(11, 226);
-            this.technologyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.technologyLabel.Location = new System.Drawing.Point(8, 280);
             this.technologyLabel.Name = "technologyLabel";
-            this.technologyLabel.Size = new System.Drawing.Size(82, 17);
+            this.technologyLabel.Size = new System.Drawing.Size(63, 13);
             this.technologyLabel.TabIndex = 19;
             this.technologyLabel.Text = "Technology";
             // 
@@ -194,10 +187,9 @@
             // 
             this.technologyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.technologyComboBox.FormattingEnabled = true;
-            this.technologyComboBox.Location = new System.Drawing.Point(15, 245);
-            this.technologyComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.technologyComboBox.Location = new System.Drawing.Point(11, 295);
             this.technologyComboBox.Name = "technologyComboBox";
-            this.technologyComboBox.Size = new System.Drawing.Size(707, 24);
+            this.technologyComboBox.Size = new System.Drawing.Size(531, 21);
             this.technologyComboBox.TabIndex = 18;
             // 
             // timer1
@@ -213,9 +205,10 @@
             this.Description,
             this.BookedHours});
             this.bookingsListView.FullRowSelect = true;
-            this.bookingsListView.Location = new System.Drawing.Point(14, 34);
+            this.bookingsListView.Location = new System.Drawing.Point(10, 28);
+            this.bookingsListView.Margin = new System.Windows.Forms.Padding(2);
             this.bookingsListView.Name = "bookingsListView";
-            this.bookingsListView.Size = new System.Drawing.Size(708, 89);
+            this.bookingsListView.Size = new System.Drawing.Size(532, 147);
             this.bookingsListView.TabIndex = 20;
             this.bookingsListView.UseCompatibleStateImageBehavior = false;
             this.bookingsListView.View = System.Windows.Forms.View.Details;
@@ -247,10 +240,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 325);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(8, 360);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Extension";
             // 
@@ -258,18 +250,18 @@
             // 
             this.extensionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.extensionComboBox.FormattingEnabled = true;
-            this.extensionComboBox.Location = new System.Drawing.Point(15, 344);
-            this.extensionComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.extensionComboBox.Location = new System.Drawing.Point(11, 376);
             this.extensionComboBox.Name = "extensionComboBox";
-            this.extensionComboBox.Size = new System.Drawing.Size(707, 24);
+            this.extensionComboBox.Size = new System.Drawing.Size(531, 21);
             this.extensionComboBox.TabIndex = 21;
             // 
             // normalRadioButton
             // 
             this.normalRadioButton.AutoSize = true;
-            this.normalRadioButton.Location = new System.Drawing.Point(123, 438);
+            this.normalRadioButton.Location = new System.Drawing.Point(33, 10);
+            this.normalRadioButton.Margin = new System.Windows.Forms.Padding(2);
             this.normalRadioButton.Name = "normalRadioButton";
-            this.normalRadioButton.Size = new System.Drawing.Size(74, 21);
+            this.normalRadioButton.Size = new System.Drawing.Size(58, 17);
             this.normalRadioButton.TabIndex = 23;
             this.normalRadioButton.TabStop = true;
             this.normalRadioButton.Text = "Normal";
@@ -278,9 +270,10 @@
             // Overtime1radioButton
             // 
             this.Overtime1radioButton.AutoSize = true;
-            this.Overtime1radioButton.Location = new System.Drawing.Point(237, 438);
+            this.Overtime1radioButton.Location = new System.Drawing.Point(119, 10);
+            this.Overtime1radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.Overtime1radioButton.Name = "Overtime1radioButton";
-            this.Overtime1radioButton.Size = new System.Drawing.Size(104, 21);
+            this.Overtime1radioButton.Size = new System.Drawing.Size(81, 17);
             this.Overtime1radioButton.TabIndex = 24;
             this.Overtime1radioButton.TabStop = true;
             this.Overtime1radioButton.Text = "Overtime x1";
@@ -289,9 +282,10 @@
             // overtime15radioButton
             // 
             this.overtime15radioButton.AutoSize = true;
-            this.overtime15radioButton.Location = new System.Drawing.Point(381, 438);
+            this.overtime15radioButton.Location = new System.Drawing.Point(227, 10);
+            this.overtime15radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.overtime15radioButton.Name = "overtime15radioButton";
-            this.overtime15radioButton.Size = new System.Drawing.Size(116, 21);
+            this.overtime15radioButton.Size = new System.Drawing.Size(90, 17);
             this.overtime15radioButton.TabIndex = 25;
             this.overtime15radioButton.TabStop = true;
             this.overtime15radioButton.Text = "Overtime x1.5";
@@ -300,23 +294,74 @@
             // overtimer2radioButton
             // 
             this.overtimer2radioButton.AutoSize = true;
-            this.overtimer2radioButton.Location = new System.Drawing.Point(537, 438);
+            this.overtimer2radioButton.Location = new System.Drawing.Point(344, 10);
+            this.overtimer2radioButton.Margin = new System.Windows.Forms.Padding(2);
             this.overtimer2radioButton.Name = "overtimer2radioButton";
-            this.overtimer2radioButton.Size = new System.Drawing.Size(104, 21);
+            this.overtimer2radioButton.Size = new System.Drawing.Size(81, 17);
             this.overtimer2radioButton.TabIndex = 26;
             this.overtimer2radioButton.TabStop = true;
             this.overtimer2radioButton.Text = "Overtime x2";
             this.overtimer2radioButton.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.overtimer2radioButton);
+            this.panel1.Controls.Add(this.normalRadioButton);
+            this.panel1.Controls.Add(this.overtime15radioButton);
+            this.panel1.Controls.Add(this.Overtime1radioButton);
+            this.panel1.Location = new System.Drawing.Point(59, 443);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(452, 35);
+            this.panel1.TabIndex = 27;
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Location = new System.Drawing.Point(178, 180);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(36, 17);
+            this.allRadioButton.TabIndex = 28;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "All";
+            this.allRadioButton.UseVisualStyleBackColor = true;
+            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
+            // 
+            // regionRadioButton
+            // 
+            this.regionRadioButton.AutoSize = true;
+            this.regionRadioButton.Location = new System.Drawing.Point(239, 180);
+            this.regionRadioButton.Name = "regionRadioButton";
+            this.regionRadioButton.Size = new System.Drawing.Size(59, 17);
+            this.regionRadioButton.TabIndex = 29;
+            this.regionRadioButton.TabStop = true;
+            this.regionRadioButton.Text = "Region";
+            this.regionRadioButton.UseVisualStyleBackColor = true;
+            this.regionRadioButton.CheckedChanged += new System.EventHandler(this.regionRadioButton_CheckedChanged);
+            // 
+            // teamRadioButton
+            // 
+            this.teamRadioButton.AutoSize = true;
+            this.teamRadioButton.Location = new System.Drawing.Point(323, 180);
+            this.teamRadioButton.Name = "teamRadioButton";
+            this.teamRadioButton.Size = new System.Drawing.Size(52, 17);
+            this.teamRadioButton.TabIndex = 30;
+            this.teamRadioButton.TabStop = true;
+            this.teamRadioButton.Text = "Team";
+            this.teamRadioButton.UseVisualStyleBackColor = true;
+            this.teamRadioButton.CheckedChanged += new System.EventHandler(this.teamRadioButton_CheckedChanged);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // TimesheetEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 519);
-            this.Controls.Add(this.overtimer2radioButton);
-            this.Controls.Add(this.overtime15radioButton);
-            this.Controls.Add(this.Overtime1radioButton);
-            this.Controls.Add(this.normalRadioButton);
+            this.ClientSize = new System.Drawing.Size(550, 519);
+            this.Controls.Add(this.teamRadioButton);
+            this.Controls.Add(this.regionRadioButton);
+            this.Controls.Add(this.allRadioButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.extensionComboBox);
             this.Controls.Add(this.bookingsListView);
@@ -334,12 +379,14 @@
             this.Controls.Add(this.codeComboBox);
             this.Controls.Add(this.projectComboBox);
             this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TimesheetEntry";
             this.Text = "Timesheet Reminder";
             this.Load += new System.EventHandler(this.TimesheetEntry_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +421,10 @@
         private System.Windows.Forms.RadioButton Overtime1radioButton;
         private System.Windows.Forms.RadioButton overtime15radioButton;
         private System.Windows.Forms.RadioButton overtimer2radioButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton allRadioButton;
+        private System.Windows.Forms.RadioButton regionRadioButton;
+        private System.Windows.Forms.RadioButton teamRadioButton;
+        private System.Windows.Forms.Timer timer2;
     }
 }
