@@ -44,6 +44,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.fillEmptys = new System.Windows.Forms.Button();
+            this.fillText = new System.Windows.Forms.TextBox();
             this.movementsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,6 @@
             this.fridayInput.Name = "fridayInput";
             this.fridayInput.Size = new System.Drawing.Size(207, 20);
             this.fridayInput.TabIndex = 8;
-            
             // 
             // webBrowser1
             // 
@@ -116,7 +116,6 @@
             this.thursdayInput.Name = "thursdayInput";
             this.thursdayInput.Size = new System.Drawing.Size(207, 20);
             this.thursdayInput.TabIndex = 6;
-            
             // 
             // label3
             // 
@@ -135,7 +134,6 @@
             this.wednesdayInput.Name = "wednesdayInput";
             this.wednesdayInput.Size = new System.Drawing.Size(207, 20);
             this.wednesdayInput.TabIndex = 4;
-           
             // 
             // label2
             // 
@@ -154,7 +152,6 @@
             this.tuesdayInput.Name = "tuesdayInput";
             this.tuesdayInput.Size = new System.Drawing.Size(207, 20);
             this.tuesdayInput.TabIndex = 2;
-            
             // 
             // label1
             // 
@@ -173,7 +170,6 @@
             this.mondayInput.Name = "mondayInput";
             this.mondayInput.Size = new System.Drawing.Size(207, 20);
             this.mondayInput.TabIndex = 0;
-            
             // 
             // okButton
             // 
@@ -199,19 +195,28 @@
             // 
             // fillEmptys
             // 
-            this.fillEmptys.Location = new System.Drawing.Point(51, 271);
+            this.fillEmptys.Location = new System.Drawing.Point(17, 271);
             this.fillEmptys.Name = "fillEmptys";
-            this.fillEmptys.Size = new System.Drawing.Size(132, 23);
+            this.fillEmptys.Size = new System.Drawing.Size(113, 23);
             this.fillEmptys.TabIndex = 4;
-            this.fillEmptys.Text = "Fill empty days with IN";
+            this.fillEmptys.Text = "Fill empty days with:";
             this.fillEmptys.UseVisualStyleBackColor = true;
             this.fillEmptys.Click += new System.EventHandler(this.fillEmptys_Click);
+            // 
+            // fillText
+            // 
+            this.fillText.Location = new System.Drawing.Point(135, 274);
+            this.fillText.Margin = new System.Windows.Forms.Padding(2);
+            this.fillText.Name = "fillText";
+            this.fillText.Size = new System.Drawing.Size(86, 20);
+            this.fillText.TabIndex = 10;
             // 
             // MovementEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(233, 343);
+            this.Controls.Add(this.fillText);
             this.Controls.Add(this.fillEmptys);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -224,6 +229,7 @@
             this.movementsGroupBox.ResumeLayout(false);
             this.movementsGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -244,5 +250,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button fillEmptys;
+        private System.Windows.Forms.TextBox fillText;
     }
 }
