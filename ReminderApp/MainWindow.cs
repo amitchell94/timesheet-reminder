@@ -23,8 +23,6 @@ namespace ReminderApp
         DateTime lastTimeMovementsFilled = DateTime.MinValue;
         DateTime lastTimeMovementsFillAttempted = DateTime.MinValue;
         
-       
-
         public MainWindow()
         {
             InitializeComponent();
@@ -75,7 +73,7 @@ namespace ReminderApp
                 {
                     lastTimeMovementsFillAttempted = DateTime.Now;
                     webBrowser1.ScriptErrorsSuppressed = true;
-                    webBrowser1.Navigate(new Uri("http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx"));
+                    webBrowser1.Navigate(new Uri("http://intranet.cougarautomation.net/Cats/Movements/MyMovements.aspx"));
                 }
             }
         }
@@ -205,7 +203,7 @@ namespace ReminderApp
             {
                 if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
                 {
-                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx")
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougarautomation.net/Cats/Movements/MyMovements.aspx")
                     {
                         MovementFiller.fillAllMovements((SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance);
                     }

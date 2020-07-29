@@ -35,7 +35,7 @@ namespace ReminderApp
         private void MovementEntry_Load(object sender, EventArgs e)
         {
             webBrowser1.ScriptErrorsSuppressed = true;
-            webBrowser1.Navigate(new Uri("http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx"));
+            webBrowser1.Navigate(new Uri("http://intranet.cougarautomation.net/Cats/Movements/MyMovements.aspx"));
 
             okButton.Enabled = false;
             mondayInput.Enabled = false;
@@ -59,7 +59,7 @@ namespace ReminderApp
             {
                 if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
                 {
-                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Cats/Movements/MyMovements.aspx")
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougarautomation.net/Cats/Movements/MyMovements.aspx")
                     {
 
                         Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
@@ -135,51 +135,6 @@ namespace ReminderApp
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void mondayInput_Enter(object sender, EventArgs e)
-        {
-            // Kick off SelectAll asyncronously so that it occurs after Click
-            BeginInvoke((Action)delegate
-            {
-                mondayInput.SelectAll();
-            });
-        }
-
-        private void tuesdayInput_Enter(object sender, EventArgs e)
-        {
-            // Kick off SelectAll asyncronously so that it occurs after Click
-            BeginInvoke((Action)delegate
-            {
-                tuesdayInput.SelectAll();
-            });
-        }
-
-        private void wednesdayInput_Enter(object sender, EventArgs e)
-        {
-            // Kick off SelectAll asyncronously so that it occurs after Click
-            BeginInvoke((Action)delegate
-            {
-                wednesdayInput.SelectAll();
-            });
-        }
-
-        private void thursdayInput_Enter(object sender, EventArgs e)
-        {
-            // Kick off SelectAll asyncronously so that it occurs after Click
-            BeginInvoke((Action)delegate
-            {
-                thursdayInput.SelectAll();
-            });
-        }
-
-        private void fridayInput_Enter(object sender, EventArgs e)
-        {
-            // Kick off SelectAll asyncronously so that it occurs after Click
-            BeginInvoke((Action)delegate
-            {
-                fridayInput.SelectAll();
-            });
         }
 
         private void fillEmptys_Click(object sender, EventArgs e)

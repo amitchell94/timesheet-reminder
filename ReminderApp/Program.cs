@@ -20,9 +20,11 @@ namespace ReminderApp
         }
 
         //TODO:
-        //Delete note taking file path
+        //Make timesheet entry wider.
+        //Delete note taking file path - DONE
         //Confirm recently booked projects is working as expected.
-        //Add radio buttons for all, teams, projects.
+        //Add radio buttons for all, teams, projects. -DONE
+        //Test radio buttons and try to break it.
         //Add help file?
         //Add version no.?
         //Backlog unsubmitted timesheet entries?

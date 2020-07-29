@@ -37,7 +37,7 @@ namespace ReminderApp
             loadingText.Visible = true;
 
             webBrowser1.ScriptErrorsSuppressed = true;
-            webBrowser1.Navigate("http://intranet.cougar-automation.co.uk/Timesheet/Timesheet.aspx");
+            webBrowser1.Navigate("http://intranet.cougarautomation.net/Timesheet/Timesheet.aspx");
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -46,7 +46,7 @@ namespace ReminderApp
             {
                 if (webBrowser1.ReadyState == WebBrowserReadyState.Complete)
                 {
-                    if (webBrowser1.Url.ToString() == "http://intranet.cougar-automation.co.uk/Timesheet/Timesheet.aspx")
+                    if (webBrowser1.Url.ToString() == "http://intranet.cougarautomation.net/Timesheet/Timesheet.aspx")
                     {
                         Web_V1 = (SHDocVw.WebBrowser_V1)webBrowser1.ActiveXInstance;
 
@@ -174,7 +174,7 @@ namespace ReminderApp
             loadingText.Visible = true;
 
             webBrowser1.ScriptErrorsSuppressed = true;
-            webBrowser1.Navigate("http://intranet.cougar-automation.co.uk/Timesheet/Timesheet.aspx");
+            webBrowser1.Navigate("http://intranet.cougarautomation.net/Timesheet/Timesheet.aspx");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
