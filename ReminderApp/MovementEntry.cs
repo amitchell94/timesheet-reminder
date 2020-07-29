@@ -44,6 +44,8 @@ namespace ReminderApp
             thursdayInput.Enabled = false;
             fridayInput.Enabled = false;
 
+            fillText.Text = "IN";
+
             if (thisWeek)
             {
                 movementsGroupBox.Text = "This Weeks Movements";
@@ -139,18 +141,18 @@ namespace ReminderApp
 
         private void fillEmptys_Click(object sender, EventArgs e)
         {
-            checkAndFillWithIn(mondayInput);
-            checkAndFillWithIn(tuesdayInput);
-            checkAndFillWithIn(wednesdayInput);
-            checkAndFillWithIn(thursdayInput);
-            checkAndFillWithIn(fridayInput);
+            checkAndFillWithText(mondayInput,fillText.Text);
+            checkAndFillWithText(tuesdayInput, fillText.Text);
+            checkAndFillWithText(wednesdayInput, fillText.Text);
+            checkAndFillWithText(thursdayInput, fillText.Text);
+            checkAndFillWithText(fridayInput, fillText.Text);
         }
 
-        private void checkAndFillWithIn (TextBox textBox)
+        private void checkAndFillWithText (TextBox textBox,string text)
         {
             if (textBox.Text == String.Empty)
             {
-                textBox.Text = "IN";
+                textBox.Text = text;
             }
         }
     }
