@@ -155,9 +155,14 @@ namespace ReminderApp
                         }
                         lastProject = Properties.Settings.Default.lastBookedProject;
 
-                        if (!String.IsNullOrEmpty(lastProject) && projectComboBox.Items.Contains(lastProject))
+                        if (!String.IsNullOrEmpty(lastProject))
                         {
-                            projectComboBox.SelectedItem = lastProject;
+                            if (projectComboBox.Items.Contains(lastProject)) {
+                                projectComboBox.SelectedItem = lastProject;
+                            } else
+                            {
+                                MessageBox.Show(lastProject + " is no longer in project list");
+                            }
                         }
                         else
                         {
@@ -448,103 +453,7 @@ namespace ReminderApp
                 lvw.Columns[3].Width = nWidth;
         }
 
-        private void bookingsListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string radioButton = bookingList[bookingsListView.FocusedItem.Index].radioButton;
-
-            lastProject = bookingList[bookingsListView.FocusedItem.Index].project;
-            lastCode = bookingList[bookingsListView.FocusedItem.Index].code;
-            lastExtension = bookingList[bookingsListView.FocusedItem.Index].extension;
-            lastDesc = bookingList[bookingsListView.FocusedItem.Index].description;
-            selectedTechnology = bookingList[bookingsListView.FocusedItem.Index].technology;
-            lastHours = bookingList[bookingsListView.FocusedItem.Index].bookedHours;
-            lastBookedOT = bookingList[bookingsListView.FocusedItem.Index].overtime;
-
-            if (radioButton == "all" && allRadioInput.@checked != true)
-            {
-                lastBookedRadioButtonUpdateRequired = true;
-                allRadioButton.Checked = true;
-            }
-            else if (radioButton == "region" && regionRadioInput.@checked != true)
-            {
-                lastBookedRadioButtonUpdateRequired = true;
-                regionRadioButton.Checked = true;
-            }
-            else if (radioButton == "team" && teamRadioInput.@checked != true)
-            {
-                lastBookedRadioButtonUpdateRequired = true;
-                teamRadioButton.Checked = true;
-            }
-            else
-            {
-
-                if (!String.IsNullOrEmpty(lastProject) && projectComboBox.Items.Contains(lastProject))
-                {
-                    technologyComboUpdateRequired = true;
-
-                    projectComboBox.SelectedItem = lastProject;
-                }
-                else
-                {
-                    if (projectComboBox.Items.Count > 0)
-                    {
-                        projectComboBox.SelectedIndex = 0;
-                    }
-                }
-
-                if (!String.IsNullOrEmpty(lastCode) && codeComboBox.Items.Contains(lastCode))
-                {
-                    codeComboBox.SelectedItem = lastCode;
-                }
-                else
-                {
-                    if (codeComboBox.Items.Count > 0)
-                    {
-                        codeComboBox.SelectedIndex = 0;
-                    }
-                }
-
-                if (!String.IsNullOrEmpty(lastDesc))
-                {
-                    descTextBox.Text = lastDesc;
-                }
-
-                if (!String.IsNullOrEmpty(lastExtension) && extensionComboBox.Items.Contains(lastExtension))
-                {
-                    extensionComboBox.SelectedItem = lastExtension;
-                }
-                else
-                {
-                    if (extensionComboBox.Items.Count > 0)
-                    {
-                        extensionComboBox.SelectedIndex = 0;
-                    }
-                }
-
-                if (!String.IsNullOrEmpty(lastHours))
-                {
-                    hoursTextBox.Text = lastHours;
-                }
-
-                if (lastBookedOT == "1")
-                {
-                    Overtime1radioButton.Checked = true;
-                }
-                else if (lastBookedOT == "1.5")
-                {
-                    overtime15radioButton.Checked = true;
-                }
-                else if (lastBookedOT == "2")
-                {
-                    overtimer2radioButton.Checked = true;
-                }
-                else
-                {
-                    normalRadioButton.Checked = true;
-                }
-            }
-
-        }
+     
 
         private void regionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -779,6 +688,119 @@ namespace ReminderApp
             else
             {
                 normalRadioButton.Checked = true;
+            }
+        }
+
+        private void bookingsListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            
+            if (e.IsSelected)
+            {
+                //Keep going as we have selected something
+            }
+            else
+            {
+                return;
+            }
+
+            string radioButton = bookingList[bookingsListView.FocusedItem.Index].radioButton;
+
+            lastProject = bookingList[bookingsListView.FocusedItem.Index].project;
+            lastCode = bookingList[bookingsListView.FocusedItem.Index].code;
+            lastExtension = bookingList[bookingsListView.FocusedItem.Index].extension;
+            lastDesc = bookingList[bookingsListView.FocusedItem.Index].description;
+            selectedTechnology = bookingList[bookingsListView.FocusedItem.Index].technology;
+            lastHours = bookingList[bookingsListView.FocusedItem.Index].bookedHours;
+            lastBookedOT = bookingList[bookingsListView.FocusedItem.Index].overtime;
+
+            if (radioButton == "all" && allRadioInput.@checked != true)
+            {
+                lastBookedRadioButtonUpdateRequired = true;
+                allRadioButton.Checked = true;
+            }
+            else if (radioButton == "region" && regionRadioInput.@checked != true)
+            {
+                lastBookedRadioButtonUpdateRequired = true;
+                regionRadioButton.Checked = true;
+            }
+            else if (radioButton == "team" && teamRadioInput.@checked != true)
+            {
+                lastBookedRadioButtonUpdateRequired = true;
+                teamRadioButton.Checked = true;
+            }
+            else
+            {
+
+                if (!String.IsNullOrEmpty(lastProject))
+                {
+                    if (projectComboBox.Items.Contains(lastProject))
+                    {
+
+                        technologyComboUpdateRequired = true;
+
+                        projectComboBox.SelectedItem = lastProject;
+                    }
+                    else
+                    {
+                        MessageBox.Show(lastProject + " is no longer in project list");
+
+                        if (projectComboBox.Items.Count > 0)
+                        {
+                            projectComboBox.SelectedIndex = 0;
+                        }
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(lastCode) && codeComboBox.Items.Contains(lastCode))
+                {
+                    codeComboBox.SelectedItem = lastCode;
+                }
+                else
+                {
+                    if (codeComboBox.Items.Count > 0)
+                    {
+                        codeComboBox.SelectedIndex = 0;
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(lastDesc))
+                {
+                    descTextBox.Text = lastDesc;
+                }
+
+                if (!String.IsNullOrEmpty(lastExtension) && extensionComboBox.Items.Contains(lastExtension))
+                {
+                    extensionComboBox.SelectedItem = lastExtension;
+                }
+                else
+                {
+                    if (extensionComboBox.Items.Count > 0)
+                    {
+                        extensionComboBox.SelectedIndex = 0;
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(lastHours))
+                {
+                    hoursTextBox.Text = lastHours;
+                }
+
+                if (lastBookedOT == "1")
+                {
+                    Overtime1radioButton.Checked = true;
+                }
+                else if (lastBookedOT == "1.5")
+                {
+                    overtime15radioButton.Checked = true;
+                }
+                else if (lastBookedOT == "2")
+                {
+                    overtimer2radioButton.Checked = true;
+                }
+                else
+                {
+                    normalRadioButton.Checked = true;
+                }
             }
         }
     }

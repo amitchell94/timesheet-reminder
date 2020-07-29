@@ -205,6 +205,7 @@
             this.Description,
             this.BookedHours});
             this.bookingsListView.FullRowSelect = true;
+            this.bookingsListView.HideSelection = false;
             this.bookingsListView.Location = new System.Drawing.Point(10, 28);
             this.bookingsListView.Margin = new System.Windows.Forms.Padding(2);
             this.bookingsListView.Name = "bookingsListView";
@@ -212,7 +213,7 @@
             this.bookingsListView.TabIndex = 20;
             this.bookingsListView.UseCompatibleStateImageBehavior = false;
             this.bookingsListView.View = System.Windows.Forms.View.Details;
-            this.bookingsListView.SelectedIndexChanged += new System.EventHandler(this.bookingsListView_SelectedIndexChanged);
+            this.bookingsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.bookingsListView_ItemSelectionChanged);
             // 
             // Project
             // 
